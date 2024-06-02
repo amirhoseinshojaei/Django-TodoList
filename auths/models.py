@@ -12,7 +12,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=25)
     age = models.PositiveIntegerField(validators=[MinValueValidator(5)])
-    phone = models.CharField(unique=True,validators=[RegexValidator(r'^\+98\d{10}$',
+    phone = models.CharField(unique=True,max_length=13,validators=[RegexValidator(r'^\+98\d{10}$',
                                                         message="'Phone number must be entered in the format: +98xxxxxxxxxx")])
     
     groups = models.ManyToManyField(Group, related_name='customuser_set', blank=True)
