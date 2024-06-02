@@ -7,8 +7,8 @@ class Todo(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=5500)
-    published_at = models.DateTimeField(default=timezone.now())
-    updated_at = models.DateTimeField(default=timezone.now())
+    published_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
 
     class Meta:
