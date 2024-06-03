@@ -1,6 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Todo
 from .forms import TodoForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -27,3 +28,11 @@ def index(request):
         "title": "TODO LIST",
     }
     return render(request, 'todo/index.html', page)
+
+
+def remove(request,item_id):
+
+    item = get_object_or_404(Todo,id = item_id)
+    item.delete()
+    messages.success(request,'item removed!')
+    return redirect('todo')
