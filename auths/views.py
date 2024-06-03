@@ -65,3 +65,33 @@ def signup(request):
     
     return render(request,'signup.html')
 
+
+@csrf_exempt
+def signin(request):
+
+    if request.user.is_authenticated:
+
+        messages.warning(request,'You are already LoggedIn')
+
+    if request.method == 'POST':
+
+        email = request.POST['email']
+        password = request.POST['password']
+
+        try:
+
+            CustomUser.objects.get(emaill =email)
+            user = authenticate(request,email=email,password=password)
+
+            if user is not None:
+
+                login(request,user)
+                messages.success("You are LoggedIn")
+
+        
+        except:
+
+            messages.error(request,'User with this email does not exist')
+
+    
+    return render(request,'signin.html')
