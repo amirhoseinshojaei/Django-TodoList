@@ -95,3 +95,11 @@ def signin(request):
 
     
     return render(request,'signin.html')
+
+
+
+@csrf_exempt
+def logout(request):
+
+    logout(request)
+    messages.success(request,'Success logout')
