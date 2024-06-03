@@ -7,9 +7,11 @@ class CustomUserAdmin(admin.ModelAdmin):
 
     list_display = [
 
-        'username','emial'
+        'username','email',
         'age','phone'
     ]
+
+    list_display_links = ['username']
 
     list_max_show_all = 120
     list_per_page = 120
