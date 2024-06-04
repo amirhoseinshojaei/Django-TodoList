@@ -17,9 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from web import views
+from auths import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",views.index,name='todo'),
-    path("del/<str:item_id>",views.remove,name='del')
+    path("del/<str:item_id>",views.remove,name='del'),
+    path('sigin/',views.signin,name='signin'),
+    path('signup/',views.signup,name='signup'),
 ]
